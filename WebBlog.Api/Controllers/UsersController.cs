@@ -1,0 +1,41 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using WebBog.Api.Params;
+using WebBog.Application.Dtos;
+using Microsoft.AspNetCore.Authorization;
+using WebBog.Application.Services.User;
+
+namespace WebBog.Api.Controllers
+{
+    /// <summary>
+    /// Controller for managing user-related operations.
+    /// </summary>
+    [ApiController]
+    [Route("users")]
+    public class UsersController : ControllerBase
+    {
+        private readonly IUserService _userService;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UsersController"/> class.
+        /// </summary>
+        /// <param name="userService">The user service.</param>
+        public UsersController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
+        /// <summary>
+        /// Get a paginated list of users.
+        /// </summary>
+        /// <param name="page_size">The number of users per page.</param>
+        /// <param name="page">The page number.</param>
+        /// <returns>Returns a paginated list of users.</returns>
+        [HttpGet]
+        [Route("")]
+        public async Task<IActionResult> GetUsers(PaginationParams paginationParams)
+        {
+            var users = await _userService.GetPaginationUserAsync(paginationParams.Page, paginationParams.PageSize);
+            return Ok(users);
+        }
+    }
+}
