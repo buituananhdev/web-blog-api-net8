@@ -13,7 +13,7 @@ public partial class Post : BaseDomainEntity
 
     public int? ViewCount { get; set; }
 
-    public string? UserId { get; set; }
+    public Guid? UserId { get; set; }
 
     public long? Timestamp { get; set; }
 
