@@ -4,6 +4,7 @@ using WebBlog.Application.Dtos;
 using WebBlog.Domain.Entities;
 using WebBlog.Domain.Specifications.Comments;
 using WebBog.Application.Repositories;
+using WebBog.Application.Services.CurrentUser;
 using WebBog.Domain.Payloads;
 
 namespace WebBlog.Service.Services.CommentService
@@ -14,13 +15,15 @@ namespace WebBlog.Service.Services.CommentService
         private readonly IMapper _mapper;
         private readonly ILogger<CommentService> _logger;
         private readonly ICommentRepository _commentRepository;
+        private readonly ICurrentUserService _currentUserService;
 
-        public CommentService(IUnitOfWork unitOfWork, ICommentRepository commentRepository, IMapper mapper, ILogger<CommentService> logger)
+        public CommentService(IUnitOfWork unitOfWork, ICommentRepository commentRepository, ICurrentUserService currentUserService, IMapper mapper, ILogger<CommentService> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
             _commentRepository = commentRepository;
+            _currentUserService = currentUserService;
         }
 
         public async Task<CommentDto> AddComment(CommentDto comment)
@@ -28,6 +31,7 @@ namespace WebBlog.Service.Services.CommentService
             try
             {
                 var commentEntity = _mapper.Map<Comment>(comment);
+                commentEntity.UserId = _currentUserService.UserId;
                 await _commentRepository.AddAsync(commentEntity);
                 await _unitOfWork.SaveChangesAsync();
                 return _mapper.Map<CommentDto>(commentEntity);
