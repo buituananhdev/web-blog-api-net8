@@ -5,9 +5,9 @@ namespace WebBlog.Domain.Entities;
 public partial class Follower : BaseDomainEntity
 {
 
-    public string? UserId { get; set; }
+    public Guid? UserId { get; set; }
 
-    public string? FollowerUserId { get; set; }
+    public Guid? FollowerUserId { get; set; }
 
     public virtual User? FollowerUser { get; set; }
 

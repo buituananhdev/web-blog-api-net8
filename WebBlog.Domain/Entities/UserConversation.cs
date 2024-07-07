@@ -5,7 +5,7 @@ namespace WebBlog.Domain.Entities;
 
 public partial class UserConversation : BaseDomainEntity
 {
-    public string? ConversationId { get; set; }
+    public Guid? ConversationId { get; set; }
 
     public virtual Conversation? Conversation { get; set; }
 

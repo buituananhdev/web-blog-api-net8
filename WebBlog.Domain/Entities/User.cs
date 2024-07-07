@@ -1,4 +1,5 @@
 ﻿using WebBlog.Domain.Entities;
+using WebBlog.Domain.Enums;
 using WebBog.Domain.Common;
 
 namespace WebBog.Domain.Entities
@@ -15,7 +16,7 @@ namespace WebBog.Domain.Entities
 
         public string? Avatar { get; set; }
 
-        public int? IsActive { get; set; }
+        public Status IsActive { get; set; } = Status.Inactive;
         public virtual List<Comment> Comments { get; set; } = new List<Comment>();
 
         public virtual List<Follower> FollowerFollowerUsers { get; set; } = new List<Follower>();

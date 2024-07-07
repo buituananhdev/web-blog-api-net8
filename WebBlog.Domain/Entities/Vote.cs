@@ -5,9 +5,9 @@ namespace WebBlog.Domain.Entities;
 
 public partial class Vote : BaseDomainEntity
 {
-    public string? UserId { get; set; }
+    public Guid? UserId { get; set; }
 
-    public string? PostId { get; set; }
+    public Guid? PostId { get; set; }
 
     public int? VoteType { get; set; }
 
