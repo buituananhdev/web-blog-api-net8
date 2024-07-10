@@ -10,6 +10,7 @@ using WebBog.Application.Repositories;
 using WebBog.Domain.Enums;
 using WebBog.Domain.Specifications.Users;
 using Microsoft.AspNetCore.Http.HttpResults;
+using WebBog.Application.Services.User;
 
 namespace WebBog.Application.Services.Auth
 {
@@ -20,17 +21,19 @@ namespace WebBog.Application.Services.Auth
         private readonly IMapper _mapper;
         private readonly IEmailService _emailService;
         private readonly IUserRepository _userRepository;
-        public AuthService(IUnitOfWork unitOfWork, IConfiguration configuration, IMapper mapper, IEmailService emailService, IUserRepository userRepository)
+        private readonly IUserService _userService;
+        public AuthService(IUnitOfWork unitOfWork, IConfiguration configuration, IMapper mapper, IEmailService emailService, IUserRepository userRepository, IUserService userService)
         {
             _unitOfWork = unitOfWork;
             _configuration = configuration;
             _mapper = mapper;
             _emailService = emailService;
             _userRepository = userRepository;
+            _userService = userService;
         }
 
 
-        public async Task<TokenPayload> LoginAsync(TokenObtainPairDto tokenObtainPair)
+        public async Task<TokenPayload> LoginAsync(LoginDto tokenObtainPair)
         {
             var user = await _userRepository.FirstOrDefaultAsync(new UserEmailSpecification(tokenObtainPair.Email!));
             if (user == null || !BCrypt.Net.BCrypt.Verify(tokenObtainPair.Password, user.Password))
@@ -40,6 +43,20 @@ namespace WebBog.Application.Services.Auth
 
             var tokenPayload = JwtUtil.GenerateAccessToken(user, _configuration);
             return tokenPayload;
+        }
+
+        public async Task<UserDto> RegisterAsync(RegistrationDto registrationDto)
+        {
+            var isUserExist = await _userService.IsEmailAlreadyExist(registrationDto.Email);
+            if (isUserExist)
+            {
+                throw new EmailExistedException();
+            }
+
+            registrationDto.Password = BCrypt.Net.BCrypt.HashPassword(registrationDto.Password);
+            
+            var user = await _userService.AddUserAsync(_mapper.Map<UserDto>(registrationDto));
+            return user;
         }
     }
 }

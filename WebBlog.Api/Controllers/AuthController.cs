@@ -29,7 +29,7 @@ namespace WebBog.Api.Controllers
         /// <returns>Returns the authentication token payload upon successful login.</returns>
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> LoginAsync([FromBody] TokenObtainPairDto payload)
+        public async Task<IActionResult> LoginAsync([FromBody] LoginDto payload)
         {
             var tokenPayload = await _authService.LoginAsync(payload);
             return Ok(tokenPayload);
@@ -44,6 +44,7 @@ namespace WebBog.Api.Controllers
         [Route("register")]
         public async Task<IActionResult> RegisterAsync([FromBody] RegistrationDto payload)
         {
+            var user = await _authService.RegisterAsync(payload);
             return StatusCode(201);
         }
     }

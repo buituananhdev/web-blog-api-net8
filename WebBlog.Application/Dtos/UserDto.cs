@@ -1,17 +1,20 @@
 ﻿using System.Text.Json.Serialization;
+using WebBlog.Domain.Enums;
 
 namespace WebBog.Application.Dtos
 {
     public class UserDto
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
-        [JsonPropertyName("full_name")]
-        public string? FullName { get; set; }
+        public string Fullname { get; set; } = null!;
 
-        public string? Email { get; set; }
+        public string? Describe { get; set; }
 
-        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public RoleDto? Role { get; set; }
+        public string Email { get; set; } = null!;
+        public string Password { get; set; } = null!;
+        public string? Avatar { get; set; }
+
+        public Status IsActive { get; set; } = Status.Inactive;
     }
 }

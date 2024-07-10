@@ -1,3 +1,4 @@
+using System.Globalization;
 using WebBog.Application.Dtos;
 using WebBog.Domain.Payloads;
 
@@ -8,4 +9,6 @@ public interface IUserService
     Task<UserDto?> GetMe();
     Task<PaginatedResult<UserDto>> GetPaginationUserAsync(int page, int pageSize);
     Task<UserDto> UpdateUserByIdAsync(UpdateUserDto adminUpdateUserDto);
+    Task<bool> IsEmailAlreadyExist(string email);
+    Task<UserDto> AddUserAsync(UserDto userDto);
 }

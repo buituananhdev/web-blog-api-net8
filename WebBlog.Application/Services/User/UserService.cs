@@ -51,5 +51,20 @@ namespace WebBog.Application.Services.User
             var userDto = await _userRepository.FirstOrDefaultAsync<UserDto>(new UserIdSpecification(user.Id));
             return userDto!;
         }
+
+        public Task<bool> IsEmailAlreadyExist(string email)
+        {
+            return _userRepository.AnyAsync(new UserEmailSpecification(email));
+        }
+
+        public async Task<UserDto> AddUserAsync(UserDto userDto)
+        {
+            var user = _mapper.Map<Domain.Entities.User>(userDto);
+
+            await _userRepository.AddAsync(user);
+            await _unitOfWork.SaveChangesAsync();
+
+            return _mapper.Map<UserDto>(user);
+        }
     }
 }
