@@ -6,6 +6,8 @@ using WebBog.Api.Middlewares;
 using FluentValidation;
 using System.Reflection;
 using WebBog.Api.Filters;
+using static Org.BouncyCastle.Math.EC.ECCurve;
+using Microsoft.Extensions.Options;
 
 namespace WebBog.Api
 {

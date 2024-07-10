@@ -6,5 +6,6 @@ namespace WebBog.Application.Services.Auth;
 
 public interface IAuthService
 {
-    Task<TokenPayload> LoginAsync(TokenObtainPairDto loginDto);
+    Task<TokenPayload> LoginAsync(LoginDto loginDto);
+    Task<UserDto> RegisterAsync(RegistrationDto registrationDto);
 }

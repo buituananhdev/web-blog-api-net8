@@ -87,6 +87,11 @@ namespace WebBog.Infrastructure.Repositories
         {
             _dbSet.Update(entity);
         }
+
+        public Task<bool> AnyAsync(Specification<T>? spec = null)
+        {
+            return _dbSet.AsNoTracking().ApplySpecification(spec).AnyAsync();
+        }
     }
 
     internal static class RepositoryExtensions

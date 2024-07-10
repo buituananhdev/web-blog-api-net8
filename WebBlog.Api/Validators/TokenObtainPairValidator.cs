@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace WebBog.Api.Validators
 {
-    public class TokenObtainPairValidator : AbstractValidator<TokenObtainPairDto>
+    public class TokenObtainPairValidator : AbstractValidator<LoginDto>
     {
         public TokenObtainPairValidator()
         {
