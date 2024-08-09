@@ -11,4 +11,5 @@ public interface IUserService
     Task<UserDto> UpdateUserByIdAsync(UpdateUserDto adminUpdateUserDto);
     Task<bool> IsEmailAlreadyExist(string email);
     Task<UserDto> AddUserAsync(UserDto userDto);
+    Task<UserDto> GetCurrentUserAsync();
 }

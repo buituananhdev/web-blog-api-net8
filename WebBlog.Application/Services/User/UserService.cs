@@ -66,5 +66,10 @@ namespace WebBog.Application.Services.User
 
             return _mapper.Map<UserDto>(user);
         }
+
+        public async Task<UserDto> GetCurrentUserAsync()
+        {
+            return await _userRepository.FirstOrDefaultAsync<UserDto>(new UserIdSpecification(_currentUserService.UserId));
+        }
     }
 }

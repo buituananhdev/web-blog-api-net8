@@ -1,4 +1,4 @@
-
+﻿
 using WebBog.Application;
 using WebBog.Infrastructure;
 using Microsoft.OpenApi.Models;
@@ -64,6 +64,11 @@ namespace WebBog.Api
             app.UseCors(builder =>
             {
                 builder.WithOrigins(app.Configuration["AllowedHosts"] ?? "localhost")
+                       .AllowAnyMethod()
+                       .AllowAnyHeader()
+                       .AllowCredentials();
+
+                builder.WithOrigins("http://localhost:3002")
                        .AllowAnyMethod()
                        .AllowAnyHeader()
                        .AllowCredentials();

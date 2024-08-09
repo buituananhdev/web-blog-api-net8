@@ -9,7 +9,7 @@ using WebBlog.Service.Services.CommentService;
 namespace WebBlog.Api.Controllers
 {
     [ApiController]
-    [Route("comments")]
+    [Route("api/comments")]
     public class CommentsController : ControllerBase
     {
         private readonly ICommentService _CommentService;
