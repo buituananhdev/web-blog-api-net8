@@ -17,7 +17,6 @@ namespace WebBog.Application.Profiles
 
             // Registration profile
             CreateMap<RegistrationDto, UserDto>()
-            .ForMember(dest => dest.Fullname, opt => opt.MapFrom(src => src.FullName))
             .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
             .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
             .ForMember(dest => dest.Avatar, opt => opt.Ignore()) // Ignore Avatar for registration

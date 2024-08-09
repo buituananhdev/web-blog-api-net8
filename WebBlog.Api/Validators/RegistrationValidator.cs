@@ -20,11 +20,6 @@ namespace WebBog.Api.Validators
                 .NotEmpty().WithMessage("Missing required confirm_password fields")
                 .Equal(x => x.Password)
                 .WithMessage("Password and confirm password do not match");
-
-            RuleFor(x => x.FullName)
-                .NotEmpty().WithMessage("Missing required full_name field")
-                .Matches(@"^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z])*$")
-                .WithMessage("Invalid full_name field format: Starts with one or more letters,  allows for characters like spaces,hyphens, apostrophes, commas, and periods within the name, and does not allow trailing spaces");
         }
     }
 }

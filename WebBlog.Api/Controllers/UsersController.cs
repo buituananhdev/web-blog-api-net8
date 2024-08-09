@@ -10,7 +10,7 @@ namespace WebBog.Api.Controllers
     /// Controller for managing user-related operations.
     /// </summary>
     [ApiController]
-    [Route("users")]
+    [Route("api/users")]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -36,6 +36,14 @@ namespace WebBog.Api.Controllers
         {
             var users = await _userService.GetPaginationUserAsync(paginationParams.Page, paginationParams.PageSize);
             return Ok(users);
+        }
+
+        [HttpGet("me")]
+        [Authorize]
+        public async Task<IActionResult> GetCurrentUser()
+        {
+            var user = await _userService.GetCurrentUserAsync();
+            return Ok(user);
         }
     }
 }

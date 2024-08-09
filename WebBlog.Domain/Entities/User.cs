@@ -6,7 +6,7 @@ namespace WebBog.Domain.Entities
 {
     public class User : BaseDomainEntity
     {
-        public string Fullname { get; set; } = null!;   
+        public string? Fullname { get; set; } = string.Empty;   
 
         public string? Describe { get; set; }
 
