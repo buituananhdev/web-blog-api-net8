@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebBlog.Domain.Entities;
-using WebBog.Domain.Entities;
+using WebBlog.Domain.Entities;
 
-namespace WebBog.Infrastructure
+namespace WebBlog.Infrastructure
 {
     public partial class DataContext : DbContext
     {

@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using WebBog.Api.Params;
+using WebBlog.Api.Params;
 
-namespace WebBog.Api.Validators
+namespace WebBlog.Api.Validators
 {
     public class PaginationValidator: AbstractValidator<PaginationParams>
     {

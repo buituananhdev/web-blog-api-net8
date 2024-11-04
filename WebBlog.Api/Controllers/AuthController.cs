@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebBog.Application.Dtos;
-using WebBog.Application.Services.Auth;
+using WebBlog.Application.Dtos;
+using WebBlog.Application.Services.Auth;
 
-namespace WebBog.Api.Controllers
+namespace WebBlog.Api.Controllers
 {
     /// <summary>
     /// Controller for handling authentication operations.

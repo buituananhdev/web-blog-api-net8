@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-namespace WebBog.Application.Dtos
+namespace WebBlog.Application.Dtos
 {
     public class LoginDto
     {

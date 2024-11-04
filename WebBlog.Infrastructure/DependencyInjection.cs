@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using WebBog.Application.ExternalServices;
-using WebBog.Application.Repositories;
-using WebBog.Infrastructure.ExternalServices;
-using WebBog.Infrastructure.Repositories;
+using WebBlog.Application.ExternalServices;
+using WebBlog.Application.Repositories;
+using WebBlog.Infrastructure.ExternalServices;
+using WebBlog.Infrastructure.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebBog.Infrastructure
+namespace WebBlog.Infrastructure
 {
     public static class DependencyInjection
     {

@@ -1,11 +1,11 @@
-﻿using WebBog.Application.Repositories;
+﻿using WebBlog.Application.Repositories;
 using AutoMapper;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper.QueryableExtensions;
-using WebBog.Domain.Specifications;
+using WebBlog.Domain.Specifications;
 
-namespace WebBog.Infrastructure.Repositories
+namespace WebBlog.Infrastructure.Repositories
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {

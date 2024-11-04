@@ -1,4 +1,4 @@
-﻿using WebBog.Domain.Common;
+﻿using WebBlog.Domain.Common;
 
 namespace WebBlog.Domain.Entities;
 

@@ -1,6 +1,6 @@
-﻿using WebBog.Application.Dtos;
+﻿using WebBlog.Application.Dtos;
 
-namespace WebBog.Application.ExternalServices;
+namespace WebBlog.Application.ExternalServices;
 
 public interface IEmailService
 {

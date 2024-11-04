@@ -1,18 +1,18 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using WebBog.Application.Utils;
-using WebBog.Application.Dtos;
-using WebBog.Domain.Payloads;
-using WebBog.Application.Exceptions;
-using WebBog.Application.ExternalServices;
-using WebBog.Application.Repositories;
-using WebBog.Domain.Enums;
-using WebBog.Domain.Specifications.Users;
+using WebBlog.Application.Utils;
+using WebBlog.Application.Dtos;
+using WebBlog.Domain.Payloads;
+using WebBlog.Application.Exceptions;
+using WebBlog.Application.ExternalServices;
+using WebBlog.Application.Repositories;
+using WebBlog.Domain.Enums;
+using WebBlog.Domain.Specifications.Users;
 using Microsoft.AspNetCore.Http.HttpResults;
-using WebBog.Application.Services.User;
+using WebBlog.Application.Services.User;
 
-namespace WebBog.Application.Services.Auth
+namespace WebBlog.Application.Services.Auth
 {
     public class AuthService : IAuthService
     {

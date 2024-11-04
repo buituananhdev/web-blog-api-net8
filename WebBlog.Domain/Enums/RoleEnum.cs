@@ -1,4 +1,4 @@
-﻿namespace WebBog.Domain.Enums
+﻿namespace WebBlog.Domain.Enums
 {
     public enum RoleEnum
     {

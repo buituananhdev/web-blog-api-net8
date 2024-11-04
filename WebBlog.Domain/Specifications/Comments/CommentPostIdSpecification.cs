@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using WebBlog.Domain.Entities;
-using WebBog.Domain.Entities;
-using WebBog.Domain.Specifications;
+using WebBlog.Domain.Entities;
+using WebBlog.Domain.Specifications;
 
 namespace WebBlog.Domain.Specifications.Comments
 {

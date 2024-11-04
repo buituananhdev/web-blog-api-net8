@@ -1,5 +1,5 @@
 ﻿using System.Linq.Expressions;
-namespace WebBog.Application.Utils;
+namespace WebBlog.Application.Utils;
 
 public static class PredicateBuilder
 {

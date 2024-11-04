@@ -1,7 +1,7 @@
-﻿using WebBog.Api.Params;
+﻿using WebBlog.Api.Params;
 using FluentValidation;
 
-namespace WebBog.Api.Validators
+namespace WebBlog.Api.Validators
 {
     public class UserIdValidator : AbstractValidator<UserIdParam>
     {

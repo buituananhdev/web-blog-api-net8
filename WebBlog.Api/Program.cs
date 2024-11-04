@@ -1,15 +1,15 @@
 ﻿
-using WebBog.Application;
-using WebBog.Infrastructure;
+using WebBlog.Application;
+using WebBlog.Infrastructure;
 using Microsoft.OpenApi.Models;
-using WebBog.Api.Middlewares;
+using WebBlog.Api.Middlewares;
 using FluentValidation;
 using System.Reflection;
-using WebBog.Api.Filters;
+using WebBlog.Api.Filters;
 using static Org.BouncyCastle.Math.EC.ECCurve;
 using Microsoft.Extensions.Options;
 
-namespace WebBog.Api
+namespace WebBlog.Api
 {
     public class Program
     {
@@ -25,7 +25,7 @@ namespace WebBog.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebBog", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebBlog", Version = "v1" });
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
@@ -79,6 +79,7 @@ namespace WebBog.Api
                 app.UseSwaggerUI();
             }
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();
             app.Run();

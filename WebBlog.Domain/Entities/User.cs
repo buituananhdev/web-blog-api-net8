@@ -1,8 +1,8 @@
 ﻿using WebBlog.Domain.Entities;
 using WebBlog.Domain.Enums;
-using WebBog.Domain.Common;
+using WebBlog.Domain.Common;
 
-namespace WebBog.Domain.Entities
+namespace WebBlog.Domain.Entities
 {
     public class User : BaseDomainEntity
     {

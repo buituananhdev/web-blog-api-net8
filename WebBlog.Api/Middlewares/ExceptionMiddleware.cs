@@ -1,9 +1,9 @@
-﻿using WebBog.Application.Exceptions;
-using WebBog.Domain.Enums;
+﻿using WebBlog.Application.Exceptions;
+using WebBlog.Domain.Enums;
 using System.Text.Json;
 using FluentValidation;
 
-namespace WebBog.Api.Middlewares
+namespace WebBlog.Api.Middlewares
 {
     public class ExceptionMiddleware
     {

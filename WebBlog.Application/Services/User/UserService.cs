@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using WebBog.Application.Dtos;
-using WebBog.Application.Exceptions;
-using WebBog.Application.Repositories;
-using WebBog.Application.Services.CurrentUser;
-using WebBog.Domain.Enums;
-using WebBog.Domain.Payloads;
-using WebBog.Domain.Specifications.Users;
+using WebBlog.Application.Dtos;
+using WebBlog.Application.Exceptions;
+using WebBlog.Application.Repositories;
+using WebBlog.Application.Services.CurrentUser;
+using WebBlog.Domain.Enums;
+using WebBlog.Domain.Payloads;
+using WebBlog.Domain.Specifications.Users;
 using Microsoft.AspNetCore.Http;
 
-namespace WebBog.Application.Services.User
+namespace WebBlog.Application.Services.User
 {
     public class UserService : IUserService
     {

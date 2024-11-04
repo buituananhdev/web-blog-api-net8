@@ -1,6 +1,6 @@
 ﻿using WebBlog.Application.Dtos;
 using WebBlog.Domain.Entities;
-using WebBog.Domain.Payloads;
+using WebBlog.Domain.Payloads;
 
 namespace WebBlog.Service.Services.CommentService
 {

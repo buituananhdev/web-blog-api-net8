@@ -1,9 +1,9 @@
-﻿using WebBog.Application.Exceptions;
-using WebBog.Application.Repositories;
-using WebBog.Domain.Enums;
+﻿using WebBlog.Application.Exceptions;
+using WebBlog.Application.Repositories;
+using WebBlog.Domain.Enums;
 using Microsoft.AspNetCore.Http;
 
-namespace WebBog.Application.Services.CurrentUser
+namespace WebBlog.Application.Services.CurrentUser
 {
     public class CurrentUserService : ICurrentUserService
     {

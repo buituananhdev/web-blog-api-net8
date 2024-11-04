@@ -1,8 +1,8 @@
 using System.Globalization;
-using WebBog.Application.Dtos;
-using WebBog.Domain.Payloads;
+using WebBlog.Application.Dtos;
+using WebBlog.Domain.Payloads;
 
-namespace WebBog.Application.Services.User;
+namespace WebBlog.Application.Services.User;
 
 public interface IUserService
 {

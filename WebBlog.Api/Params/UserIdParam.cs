@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace WebBog.Api.Params
+namespace WebBlog.Api.Params
 {
     public class UserIdParam
     {

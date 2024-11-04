@@ -1,4 +1,4 @@
-﻿namespace WebBog.Application.Repositories
+﻿namespace WebBlog.Application.Repositories
 {
     public interface IUnitOfWork : IDisposable
     {

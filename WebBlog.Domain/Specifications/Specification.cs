@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace WebBog.Domain.Specifications
+namespace WebBlog.Domain.Specifications
 {
     public abstract class Specification<T>
     {

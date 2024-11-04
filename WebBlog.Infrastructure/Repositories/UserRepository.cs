@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using WebBog.Application.Repositories;
-using WebBog.Domain.Entities;
-namespace WebBog.Infrastructure.Repositories;
+using WebBlog.Application.Repositories;
+using WebBlog.Domain.Entities;
+namespace WebBlog.Infrastructure.Repositories;
 
 public class UserRepository : BaseRepository<User>, IUserRepository
 {

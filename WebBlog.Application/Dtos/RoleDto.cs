@@ -1,4 +1,4 @@
-﻿namespace WebBog.Application.Dtos
+﻿namespace WebBlog.Application.Dtos
 {
     public class RoleDto
     {

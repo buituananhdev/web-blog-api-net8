@@ -1,7 +1,7 @@
 using System.Linq.Expressions;
-using WebBog.Domain.Entities;
+using WebBlog.Domain.Entities;
 
-namespace WebBog.Domain.Specifications.Users;
+namespace WebBlog.Domain.Specifications.Users;
 
 public class UserIdSpecification(Guid id) : Specification<User>
 {

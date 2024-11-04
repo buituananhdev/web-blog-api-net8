@@ -3,11 +3,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using WebBog.Application.Services.User;
-using WebBog.Application.Services.Auth;
-using WebBog.Application.Services.CurrentUser;
+using WebBlog.Application.Services.User;
+using WebBlog.Application.Services.Auth;
+using WebBlog.Application.Services.CurrentUser;
 
-namespace WebBog.Application
+namespace WebBlog.Application
 {
     public static class DependencyInjection
     {

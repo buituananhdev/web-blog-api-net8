@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebBog.Infrastructure;
+using WebBlog.Infrastructure;
 
 #nullable disable
 
@@ -309,7 +309,7 @@ namespace WebBlog.Infrastructure.Migrations
                     b.ToTable("Votes");
                 });
 
-            modelBuilder.Entity("WebBog.Domain.Entities.User", b =>
+            modelBuilder.Entity("WebBlog.Domain.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -368,7 +368,7 @@ namespace WebBlog.Infrastructure.Migrations
                         .WithMany("Comments")
                         .HasForeignKey("PostId");
 
-                    b.HasOne("WebBog.Domain.Entities.User", "User")
+                    b.HasOne("WebBlog.Domain.Entities.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId");
 
@@ -379,12 +379,12 @@ namespace WebBlog.Infrastructure.Migrations
 
             modelBuilder.Entity("WebBlog.Domain.Entities.Follower", b =>
                 {
-                    b.HasOne("WebBog.Domain.Entities.User", "FollowerUser")
+                    b.HasOne("WebBlog.Domain.Entities.User", "FollowerUser")
                         .WithMany("FollowerFollowerUsers")
                         .HasForeignKey("FollowerUserId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("WebBog.Domain.Entities.User", "User")
+                    b.HasOne("WebBlog.Domain.Entities.User", "User")
                         .WithMany("FollowerUsers")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -400,7 +400,7 @@ namespace WebBlog.Infrastructure.Migrations
                         .WithMany("Messages")
                         .HasForeignKey("ConversationId");
 
-                    b.HasOne("WebBog.Domain.Entities.User", "Sender")
+                    b.HasOne("WebBlog.Domain.Entities.User", "Sender")
                         .WithMany("Messages")
                         .HasForeignKey("SenderId");
 
@@ -411,7 +411,7 @@ namespace WebBlog.Infrastructure.Migrations
 
             modelBuilder.Entity("WebBlog.Domain.Entities.Post", b =>
                 {
-                    b.HasOne("WebBog.Domain.Entities.User", "User")
+                    b.HasOne("WebBlog.Domain.Entities.User", "User")
                         .WithMany("Posts")
                         .HasForeignKey("UserId");
 
@@ -420,7 +420,7 @@ namespace WebBlog.Infrastructure.Migrations
 
             modelBuilder.Entity("WebBlog.Domain.Entities.Token", b =>
                 {
-                    b.HasOne("WebBog.Domain.Entities.User", "EmailNavigation")
+                    b.HasOne("WebBlog.Domain.Entities.User", "EmailNavigation")
                         .WithMany("Tokens")
                         .HasForeignKey("EmailNavigationId");
 
@@ -433,7 +433,7 @@ namespace WebBlog.Infrastructure.Migrations
                         .WithMany()
                         .HasForeignKey("ConversationId");
 
-                    b.HasOne("WebBog.Domain.Entities.User", "User")
+                    b.HasOne("WebBlog.Domain.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
@@ -448,7 +448,7 @@ namespace WebBlog.Infrastructure.Migrations
                         .WithMany("Votes")
                         .HasForeignKey("PostId");
 
-                    b.HasOne("WebBog.Domain.Entities.User", "User")
+                    b.HasOne("WebBlog.Domain.Entities.User", "User")
                         .WithMany("Votes")
                         .HasForeignKey("UserId");
 
@@ -469,7 +469,7 @@ namespace WebBlog.Infrastructure.Migrations
                     b.Navigation("Votes");
                 });
 
-            modelBuilder.Entity("WebBog.Domain.Entities.User", b =>
+            modelBuilder.Entity("WebBlog.Domain.Entities.User", b =>
                 {
                     b.Navigation("Comments");
 

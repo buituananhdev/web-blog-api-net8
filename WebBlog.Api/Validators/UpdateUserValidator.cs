@@ -1,7 +1,7 @@
-﻿using WebBog.Application.Dtos;
+﻿using WebBlog.Application.Dtos;
 using FluentValidation;
 
-namespace WebBog.Api.Validators
+namespace WebBlog.Api.Validators
 {
     public class UpdateUserValidator : AbstractValidator<UpdateUserDto>
     {
