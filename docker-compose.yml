@@ -21,10 +21,10 @@ services:
     container_name: mysql
     restart: unless-stopped
     environment:
-      - MYSQL_ROOT_PASSWORD=root_password  # Replace with your MySQL root password
-      - MYSQL_DATABASE=dotnet-boilerplate  # Replace with your MySQL database name
-      - MYSQL_USER=mysql_user             # Replace with your MySQL username
-      - MYSQL_PASSWORD=mysql_password     # Replace with your MySQL password
+      - MYSQL_ROOT_PASSWORD=123456Aa  # Replace with your MySQL root password
+      - MYSQL_DATABASE=web-blog-db  # Replace with your MySQL database name
+      - MYSQL_USER=devs             # Replace with your MySQL username
+      - MYSQL_PASSWORD=123456Aa     # Replace with your MySQL password
     ports:
       - "3306:3306"
     volumes:

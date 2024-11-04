@@ -7,6 +7,7 @@ using WebBlog.Domain.Enums;
 using WebBlog.Domain.Payloads;
 using WebBlog.Domain.Specifications.Users;
 using Microsoft.AspNetCore.Http;
+using WebBlog.Application.Services.Cache;
 
 namespace WebBlog.Application.Services.User
 {
@@ -16,19 +17,32 @@ namespace WebBlog.Application.Services.User
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
-        public UserService(ICurrentUserService currentUserService, IUnitOfWork unitOfWork, IMapper mapper, IUserRepository userRepository)
+        private readonly ICacheService _cacheService;
+        public UserService(ICurrentUserService currentUserService, IUnitOfWork unitOfWork, IMapper mapper, IUserRepository userRepository, ICacheService cacheService)
         {
             _currentUserService = currentUserService;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _userRepository = userRepository;
+            _cacheService = cacheService;
         }
 
         public async Task<PaginatedResult<UserDto>> GetPaginationUserAsync(int page, int pageSize)
         {
+            string cacheKey = $"PaginationUser_Page{page}_PageSize{pageSize}";
+            var cachedResult = await _cacheService.GetCacheAsync<PaginatedResult<UserDto>>(cacheKey);
+            if (cachedResult != null)
+            {
+                return cachedResult;
+            }
+
             var userDtos = await _userRepository.ToListAsync<UserDto>(orderBy: query => query.OrderBy(user => user.Id), page: page, size: pageSize);
             var userCount = await _userRepository.CountAsync();
-            return new PaginatedResult<UserDto>(userCount, userDtos);
+
+            var result = new PaginatedResult<UserDto>(userCount, userDtos);
+            await _cacheService.SetCacheAsync(cacheKey, result, TimeSpan.FromMinutes(5));
+
+            return result;
         }
 
         public async Task<UserDto?> GetMe()

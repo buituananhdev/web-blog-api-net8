@@ -5,6 +5,8 @@ using WebBlog.Infrastructure.ExternalServices;
 using WebBlog.Infrastructure.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using WebBlog.Application.Services.Cache;
+using WebBlog.Infrastructure.Cache;
 
 namespace WebBlog.Infrastructure
 {
@@ -14,8 +16,8 @@ namespace WebBlog.Infrastructure
         {
             services.AddDbContext<DataContext>(options =>
             {
-                var connectionString = configuration.GetConnectionString("DefaultConnection")
-                ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+                var connectionString = configuration.GetConnectionString("MySQL")
+                ?? throw new InvalidOperationException("Connection string 'MySQL' not found.");
 
                 // Specify the MySQL Server Version explicitly
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
@@ -24,6 +26,13 @@ namespace WebBlog.Infrastructure
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICacheService, CacheService>();
+            services.AddStackExchangeRedisCache(redisOptions =>
+            {
+                var connectionString = configuration.GetConnectionString("Redis")
+                ?? throw new InvalidOperationException("Connection string 'Redis' not found.");
+                redisOptions.Configuration = connectionString;
+            });
 
             return services;
         }
