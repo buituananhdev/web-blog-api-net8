@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using WebBog.Application.Dtos;
+using WebBlog.Application.Dtos;
 
-namespace WebBog.Api.Validators
+namespace WebBlog.Api.Validators
 {
     public class RegistrationValidator : AbstractValidator<RegistrationDto>
     {

@@ -1,7 +1,7 @@
-﻿using WebBog.Domain.Specifications;
+﻿using WebBlog.Domain.Specifications;
 using System.Linq.Expressions;
 
-namespace WebBog.Application.Repositories;
+namespace WebBlog.Application.Repositories;
 
 public interface IBaseRepository<T> where T : class
 {

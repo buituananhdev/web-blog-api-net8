@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using WebBlog.Domain.Enums;
-using WebBog.Application.Dtos;
-using WebBog.Domain.Entities;
+using WebBlog.Application.Dtos;
+using WebBlog.Domain.Entities;
 
-namespace WebBog.Application.Profiles
+namespace WebBlog.Application.Profiles
 {
     public class AutoMapperProfile : Profile
     {

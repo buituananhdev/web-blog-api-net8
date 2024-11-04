@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using WebBog.Application.Repositories;
+using WebBlog.Application.Repositories;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace WebBog.Infrastructure.Repositories
+namespace WebBlog.Infrastructure.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {

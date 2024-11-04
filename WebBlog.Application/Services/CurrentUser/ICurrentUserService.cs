@@ -1,4 +1,4 @@
-namespace WebBog.Application.Services.CurrentUser;
+namespace WebBlog.Application.Services.CurrentUser;
 
 public interface ICurrentUserService
 {

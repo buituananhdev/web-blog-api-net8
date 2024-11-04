@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebBog.Domain.Common
+namespace WebBlog.Domain.Common
 {
     public abstract class BaseDomainEntity : ITrackable
     {

@@ -1,5 +1,5 @@
-﻿using WebBog.Domain.Common;
-using WebBog.Domain.Entities;
+﻿using WebBlog.Domain.Common;
+using WebBlog.Domain.Entities;
 
 namespace WebBlog.Domain.Entities;
 public partial class Follower : BaseDomainEntity

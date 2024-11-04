@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace WebBog.Api.Filters
+namespace WebBlog.Api.Filters
 {
     public class ValidationFilter : IActionFilter
     {

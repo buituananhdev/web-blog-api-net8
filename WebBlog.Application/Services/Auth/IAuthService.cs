@@ -1,7 +1,7 @@
-using WebBog.Application.Dtos;
-using WebBog.Domain.Payloads;
+using WebBlog.Application.Dtos;
+using WebBlog.Domain.Payloads;
 
-namespace WebBog.Application.Services.Auth;
+namespace WebBlog.Application.Services.Auth;
 
 
 public interface IAuthService

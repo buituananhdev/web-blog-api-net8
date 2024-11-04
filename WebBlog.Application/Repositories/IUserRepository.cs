@@ -1,6 +1,6 @@
-﻿using WebBog.Domain.Entities;
+﻿using WebBlog.Domain.Entities;
 
-namespace WebBog.Application.Repositories
+namespace WebBlog.Application.Repositories
 {
     public interface IUserRepository : IBaseRepository<User>
     {

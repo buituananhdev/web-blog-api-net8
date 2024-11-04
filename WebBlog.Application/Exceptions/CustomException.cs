@@ -1,6 +1,6 @@
-﻿using WebBog.Domain.Enums;
+﻿using WebBlog.Domain.Enums;
 
-namespace WebBog.Application.Exceptions
+namespace WebBlog.Application.Exceptions
 {
     public class CustomException : Exception
     {

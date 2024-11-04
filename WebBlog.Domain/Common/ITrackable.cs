@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace WebBog.Domain.Common
+namespace WebBlog.Domain.Common
 {
     public interface ITrackable
     {

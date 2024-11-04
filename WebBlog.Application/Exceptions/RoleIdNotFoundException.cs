@@ -1,4 +1,4 @@
-﻿namespace WebBog.Application.Exceptions
+﻿namespace WebBlog.Application.Exceptions
 {
     public class RoleIdNotFoundException: NotFoundException
     {

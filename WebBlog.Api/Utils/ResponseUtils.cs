@@ -1,4 +1,4 @@
-﻿namespace WebBog.Api.Utils
+﻿namespace WebBlog.Api.Utils
 {
     public class ResponseUtils
     {

@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebBog.Api.Params;
-using WebBog.Application.Dtos;
+using WebBlog.Api.Params;
+using WebBlog.Application.Dtos;
 using Microsoft.AspNetCore.Authorization;
-using WebBog.Application.Services.User;
+using WebBlog.Application.Services.User;
 
-namespace WebBog.Api.Controllers
+namespace WebBlog.Api.Controllers
 {
     /// <summary>
     /// Controller for managing user-related operations.
@@ -38,8 +38,8 @@ namespace WebBog.Api.Controllers
             return Ok(users);
         }
 
-        [HttpGet("me")]
         [Authorize]
+        [HttpGet("me")]
         public async Task<IActionResult> GetCurrentUser()
         {
             var user = await _userService.GetCurrentUserAsync();

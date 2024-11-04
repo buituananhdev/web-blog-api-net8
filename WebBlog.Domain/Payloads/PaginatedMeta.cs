@@ -1,4 +1,4 @@
-﻿namespace WebBog.Domain.Payloads
+﻿namespace WebBlog.Domain.Payloads
 {
     public class PaginatedMeta
     {

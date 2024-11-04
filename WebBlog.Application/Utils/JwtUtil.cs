@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using WebBog.Domain.Payloads;
+using WebBlog.Domain.Payloads;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using WebBog.Domain.Entities;
+using WebBlog.Domain.Entities;
 
-namespace WebBog.Application.Utils
+namespace WebBlog.Application.Utils
 {
     public class JwtUtil
     {
@@ -34,12 +34,11 @@ namespace WebBog.Application.Utils
             };
 
             return _tokenHandler.CreateToken(tokenDescriptor);
-
         }
 
         public static TokenPayload GenerateAccessToken(User user, IConfiguration configuration)
         {
-            var secretKey = configuration.GetSection("JwtSettings:Secret")?.Value ?? "secret";
+            var secretKey = configuration.GetSection("JwtSettings:Secret")?.Value;
             var expirationTime = double.Parse(configuration.GetSection("JwtSettings:AccessTokenExpirationTime")?.Value?? "120");
             var accessToken = GenerateToken(user, secretKey, expirationTime);
             var token = new TokenPayload();
@@ -49,7 +48,7 @@ namespace WebBog.Application.Utils
 
         public static TokenPayload GenerateAccessAndRefreshToken(User user, IConfiguration configuration)
         {
-            var secretKey = configuration.GetSection("JwtSettings:Secret")?.Value ?? "secret";
+            var secretKey = configuration.GetSection("JwtSettings:Secret")?.Value;
             var accessTokenExpirationTime = double.Parse(configuration.GetSection("JwtSettings:AccessTokenExpirationTime")?.Value ?? "120");
             var refreshTokenExpirationTime = double.Parse(configuration.GetSection("JwtSettings:RefreshTokenExpirationTime")?.Value ?? "10080");
             var accessToken = GenerateToken(user, secretKey, accessTokenExpirationTime);

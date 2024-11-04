@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace WebBog.Application.Dtos
+namespace WebBlog.Application.Dtos
 {
     public class UpdateUserDto
     {

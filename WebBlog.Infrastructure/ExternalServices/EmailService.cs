@@ -1,12 +1,12 @@
 ﻿using MailKit.Net.Smtp;
 using Microsoft.Extensions.Configuration;
 using MimeKit;
-using WebBog.Application.ExternalServices;
-using WebBog.Application.Dtos;
-using WebBog.Application.Exceptions;
+using WebBlog.Application.ExternalServices;
+using WebBlog.Application.Dtos;
+using WebBlog.Application.Exceptions;
 using Microsoft.AspNetCore.Http;
 
-namespace WebBog.Infrastructure.ExternalServices
+namespace WebBlog.Infrastructure.ExternalServices
 {
     public class EmailService : IEmailService
     {

@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 using WebBlog.Domain.Enums;
 
-namespace WebBog.Application.Dtos
+namespace WebBlog.Application.Dtos
 {
     public class UserDto
     {

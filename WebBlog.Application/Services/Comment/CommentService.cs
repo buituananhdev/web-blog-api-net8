@@ -3,9 +3,9 @@ using Microsoft.Extensions.Logging;
 using WebBlog.Application.Dtos;
 using WebBlog.Domain.Entities;
 using WebBlog.Domain.Specifications.Comments;
-using WebBog.Application.Repositories;
-using WebBog.Application.Services.CurrentUser;
-using WebBog.Domain.Payloads;
+using WebBlog.Application.Repositories;
+using WebBlog.Application.Services.CurrentUser;
+using WebBlog.Domain.Payloads;
 
 namespace WebBlog.Service.Services.CommentService
 {
