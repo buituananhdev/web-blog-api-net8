@@ -3,13 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebBlog.Api", "WebBlog.Api\WebBlog.Api.csproj", "{A70851EB-1130-474D-AEC6-048382BC6AB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebBlog.Api", "src\WebBlog.Api\WebBlog.Api.csproj", "{A70851EB-1130-474D-AEC6-048382BC6AB1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebBlog.Application", "WebBlog.Application\WebBlog.Application.csproj", "{A144626B-483F-4EBC-A7A2-37610B1E36CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebBlog.Application", "src\WebBlog.Application\WebBlog.Application.csproj", "{A144626B-483F-4EBC-A7A2-37610B1E36CE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebBlog.Domain", "WebBlog.Domain\WebBlog.Domain.csproj", "{37A55E28-9E0D-43E2-87D1-75A5B8C8734B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebBlog.Domain", "src\WebBlog.Domain\WebBlog.Domain.csproj", "{37A55E28-9E0D-43E2-87D1-75A5B8C8734B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebBlog.Infrastructure", "WebBlog.Infrastructure\WebBlog.Infrastructure.csproj", "{0FC1EA59-F760-4BFF-AF0F-9F9A517C933F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebBlog.Infrastructure", "src\WebBlog.Infrastructure\WebBlog.Infrastructure.csproj", "{0FC1EA59-F760-4BFF-AF0F-9F9A517C933F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{60A11094-F4F2-469D-BA55-78843D68BDFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D091F24E-77CD-4796-84B3-11CC7838AC80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBlog.Application.UnitTests", "tests\WebBlog.Application.UnitTests\WebBlog.Application.UnitTests.csproj", "{5C3A47AA-C5F9-4B1A-A073-BD6156D42E00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBlog.Domain.UnitTests", "tests\WebBlog.Domain.UnitTests\WebBlog.Domain.UnitTests.csproj", "{2773D0F1-480F-41C0-85C4-385C792D8124}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +41,25 @@ Global
 		{0FC1EA59-F760-4BFF-AF0F-9F9A517C933F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FC1EA59-F760-4BFF-AF0F-9F9A517C933F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FC1EA59-F760-4BFF-AF0F-9F9A517C933F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C3A47AA-C5F9-4B1A-A073-BD6156D42E00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C3A47AA-C5F9-4B1A-A073-BD6156D42E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C3A47AA-C5F9-4B1A-A073-BD6156D42E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C3A47AA-C5F9-4B1A-A073-BD6156D42E00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2773D0F1-480F-41C0-85C4-385C792D8124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2773D0F1-480F-41C0-85C4-385C792D8124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2773D0F1-480F-41C0-85C4-385C792D8124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2773D0F1-480F-41C0-85C4-385C792D8124}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A70851EB-1130-474D-AEC6-048382BC6AB1} = {60A11094-F4F2-469D-BA55-78843D68BDFB}
+		{A144626B-483F-4EBC-A7A2-37610B1E36CE} = {60A11094-F4F2-469D-BA55-78843D68BDFB}
+		{37A55E28-9E0D-43E2-87D1-75A5B8C8734B} = {60A11094-F4F2-469D-BA55-78843D68BDFB}
+		{0FC1EA59-F760-4BFF-AF0F-9F9A517C933F} = {60A11094-F4F2-469D-BA55-78843D68BDFB}
+		{5C3A47AA-C5F9-4B1A-A073-BD6156D42E00} = {D091F24E-77CD-4796-84B3-11CC7838AC80}
+		{2773D0F1-480F-41C0-85C4-385C792D8124} = {D091F24E-77CD-4796-84B3-11CC7838AC80}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C5E15F5B-CBEB-400F-A5C1-FC42DDB50ECC}
