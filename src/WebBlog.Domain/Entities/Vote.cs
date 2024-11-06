@@ -1,5 +1,6 @@
 ﻿using WebBlog.Domain.Common;
 using WebBlog.Domain.Entities;
+using WebBlog.Domain.Enums;
 
 namespace WebBlog.Domain.Entities;
 
@@ -9,7 +10,7 @@ public partial class Vote : BaseDomainEntity
 
     public Guid? PostId { get; set; }
 
-    public int? VoteType { get; set; }
+    public VoteType VoteType { get; set; }
 
     public virtual Post? Post { get; set; }
 
