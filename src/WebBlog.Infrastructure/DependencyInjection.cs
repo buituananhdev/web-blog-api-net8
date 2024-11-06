@@ -26,6 +26,7 @@ namespace WebBlog.Infrastructure
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<ICacheService, CacheService>();
             services.AddStackExchangeRedisCache(redisOptions =>
             {

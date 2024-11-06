@@ -6,6 +6,7 @@ using System.Text;
 using WebBlog.Application.Services.User;
 using WebBlog.Application.Services.Auth;
 using WebBlog.Application.Services.CurrentUser;
+using WebBlog.Application.Services.Post;
 
 namespace WebBlog.Application
 {
@@ -17,6 +18,7 @@ namespace WebBlog.Application
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<ICurrentUserService, CurrentUserService>();
+            services.AddScoped<IPostService, PostService>();
             services.AddHttpContextAccessor();
 
             var key = Encoding.ASCII.GetBytes(configration.GetSection("JwtSettings:Secret").Value!);
