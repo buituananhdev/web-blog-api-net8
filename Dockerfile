@@ -4,10 +4,10 @@ WORKDIR /src
 
 # Copy the solution file and restore dependencies
 COPY *.sln .
-COPY WebBlog.Api/*.csproj ./WebBlog.Api/
-COPY WebBlog.Application/*.csproj ./WebBlog.Application/
-COPY WebBlog.Domain/*.csproj ./WebBlog.Domain/
-COPY WebBlog.Infrastructure/*.csproj ./WebBlog.Infrastructure/
+COPY src/WebBlog.Api/*.csproj ./src/WebBlog.Api/
+COPY src/WebBlog.Application/*.csproj ./src/WebBlog.Application/
+COPY src/WebBlog.Domain/*.csproj ./src/WebBlog.Domain/
+COPY src/WebBlog.Infrastructure/*.csproj ./src/WebBlog.Infrastructure/
 RUN dotnet restore
 
 # Copy the entire project and build
