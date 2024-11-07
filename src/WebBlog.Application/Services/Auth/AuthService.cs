@@ -19,15 +19,15 @@ namespace WebBlog.Application.Services.Auth
         private readonly IUnitOfWork _unitOfWork;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
-        private readonly IEmailService _emailService;
+        private readonly IRabbitMQService _rabbitMQService;
         private readonly IUserRepository _userRepository;
         private readonly IUserService _userService;
-        public AuthService(IUnitOfWork unitOfWork, IConfiguration configuration, IMapper mapper, IEmailService emailService, IUserRepository userRepository, IUserService userService)
+        public AuthService(IUnitOfWork unitOfWork, IConfiguration configuration, IMapper mapper, IRabbitMQService rabbitMQService, IUserRepository userRepository, IUserService userService)
         {
             _unitOfWork = unitOfWork;
             _configuration = configuration;
             _mapper = mapper;
-            _emailService = emailService;
+            _rabbitMQService = rabbitMQService;
             _userRepository = userRepository;
             _userService = userService;
         }
@@ -54,8 +54,15 @@ namespace WebBlog.Application.Services.Auth
             }
 
             registrationDto.Password = BCrypt.Net.BCrypt.HashPassword(registrationDto.Password);
-            
+
             var user = await _userService.AddUserAsync(_mapper.Map<UserDto>(registrationDto));
+            MailDataDto mailDataDto= new MailDataDto()
+            {
+                EmailBody = "Test",
+                EmailSubject = "Test",
+                EmailToName = registrationDto.Email,
+            };
+            _rabbitMQService.SendEmailAsync(mailDataDto);
             return user;
         }
     }
