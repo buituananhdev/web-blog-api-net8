@@ -49,13 +49,18 @@ namespace WebBlog.Application.Services.Post
                 return cachedResult;
             }
 
-            var postDtos = await _postRepository.ToListAsync<PostDto>(
-                orderBy: query => query
-                    .OrderByDescending(post => post.Votes.Sum(v => (int)v.VoteType)),
+            var postsTask = _postRepository.ToListAsync<PostDto>(
+                orderBy: query => query.OrderByDescending(post => post.Votes.Sum(v => (int)v.VoteType)),
                 page: page,
                 size: pageSize
             );
-            var postCount = await _postRepository.CountAsync();
+
+            var postCountTask = _postRepository.CountAsync();
+
+            await Task.WhenAll(postsTask, postCountTask);
+
+            var postDtos = postsTask.Result;
+            var postCount = postCountTask.Result;
 
             var result = new PaginatedResult<PostDto>(postCount, postDtos);
             await _cacheService.SetCacheAsync(cacheKey, result, TimeSpan.FromMinutes(5));

@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using WebBlog.Application.Services.Cache;
 using WebBlog.Infrastructure.Cache;
+using WebBlog.Infrastructure.Messaging;
+using WebBlog.Infrastructure.Workers;
 
 namespace WebBlog.Infrastructure
 {
@@ -24,10 +26,17 @@ namespace WebBlog.Infrastructure
             });
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IEmailService, EmailService>();
+            services.AddSingleton<IEmailService, EmailService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<ICacheService, CacheService>();
+
+            services.AddSingleton<RabbitMQClient>(provider =>
+            new RabbitMQClient(configuration["RabbitMQ:HostName"]));
+            services.AddSingleton<RabbitMQConsumer>();
+            services.AddSingleton<RabbitMQPublisher>();
+            services.AddSingleton<IRabbitMQService, RabbitMQService>();
+            services.AddHostedService<EmailWorker>();
             services.AddStackExchangeRedisCache(redisOptions =>
             {
                 var connectionString = configuration.GetConnectionString("Redis")
