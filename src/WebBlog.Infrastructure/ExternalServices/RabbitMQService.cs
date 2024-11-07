@@ -13,7 +13,7 @@ namespace WebBlog.Infrastructure.Messaging
             _publisher = publisher;
         }
 
-        public async Task SendEmailAsync(MailDataDto mailData)
+        public void SendEmailAsync(MailDataDto mailData)
         {
             var jsonMessage = JsonConvert.SerializeObject(mailData);
             _publisher.Publish("email_queue", jsonMessage);

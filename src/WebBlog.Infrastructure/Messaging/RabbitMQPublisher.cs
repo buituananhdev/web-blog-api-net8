@@ -17,11 +17,6 @@ namespace WebBlog.Infrastructure.Messaging
         public void Publish(string queueName, string message)
         {
             var channel = _rabbitMQClient.GetChannel();
-            channel.QueueDeclare(queue: "email_queue",
-                             durable: true,  // Tạo queue bền vững
-                             exclusive: false,
-                             autoDelete: false,
-                             arguments: null);
             var body = Encoding.UTF8.GetBytes(message);
 
             channel.BasicPublish(exchange: "",

@@ -56,11 +56,12 @@ namespace WebBlog.Application.Services.Auth
             registrationDto.Password = BCrypt.Net.BCrypt.HashPassword(registrationDto.Password);
 
             var user = await _userService.AddUserAsync(_mapper.Map<UserDto>(registrationDto));
-            MailDataDto mailDataDto= new MailDataDto()
+            MailDataDto mailDataDto = new MailDataDto()
             {
-                EmailBody = "Test",
-                EmailSubject = "Test",
+                EmailBody = "Welcome to our service!",
+                EmailSubject = "Registration Confirmation",
                 EmailToName = registrationDto.Email,
+                EmailToId = registrationDto.Email
             };
             _rabbitMQService.SendEmailAsync(mailDataDto);
             return user;
