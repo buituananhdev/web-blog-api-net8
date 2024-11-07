@@ -4,6 +4,6 @@ namespace WebBlog.Application.ExternalServices
 {
     public interface IRabbitMQService
     {
-        Task SendEmailAsync(MailDataDto mailData);
+        void SendEmailAsync(MailDataDto mailData);
     }
 }
