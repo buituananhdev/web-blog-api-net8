@@ -9,6 +9,11 @@ using WebBlog.Application.Services.Cache;
 using WebBlog.Infrastructure.Cache;
 using WebBlog.Infrastructure.Messaging;
 using WebBlog.Infrastructure.Workers;
+using Serilog.Sinks.Elasticsearch;
+using Serilog;
+using Microsoft.Extensions.Hosting;
+using WebBlog.Application.Services.Logging;
+using WebBlog.Infrastructure.Logging;
 
 namespace WebBlog.Infrastructure
 {
@@ -45,6 +50,7 @@ namespace WebBlog.Infrastructure
             services.AddSingleton<RabbitMQPublisher>();
             services.AddSingleton<IRabbitMQService, RabbitMQService>();
             services.AddHostedService<EmailWorker>();
+            services.AddSingleton<ILoggerService, SerilogLogger>();
             services.AddStackExchangeRedisCache(redisOptions =>
             {
                 var connectionString = configuration.GetConnectionString("Redis")
@@ -52,7 +58,23 @@ namespace WebBlog.Infrastructure
                 redisOptions.Configuration = connectionString;
             });
 
+            Log.Logger = new LoggerConfiguration()
+                .Enrich.FromLogContext()
+                .WriteTo.Console()
+                .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(configuration["ElasticSearch:Uri"]))
+                {
+                    AutoRegisterTemplate = true,
+                    IndexFormat = $"{configuration["ElasticSearch:DefaultIndex"]}-{DateTime.UtcNow:yyyy.MM.dd}",
+                })
+                .CreateLogger();
+
             return services;
+        }
+
+        public static IHostBuilder UseSerilogLogging(this IHostBuilder hostBuilder)
+        {
+            hostBuilder.UseSerilog();
+            return hostBuilder;
         }
     }
 }

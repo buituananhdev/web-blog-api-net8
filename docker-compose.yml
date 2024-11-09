@@ -7,15 +7,21 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:8080"
+      - "3000:3001"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
     restart: unless-stopped
     depends_on:
       - db
       - redis
+      - rabbitmq
+      - elasticsearch
+      - logstash
     networks:
       - web-blog-network
 
@@ -24,10 +30,10 @@ services:
     container_name: mysql
     restart: unless-stopped
     environment:
-      - MYSQL_ROOT_PASSWORD=123456Aa  # Replace with your MySQL root password
-      - MYSQL_DATABASE=web-blog-db  # Replace with your MySQL database name
-      - MYSQL_USER=devs             # Replace with your MySQL username
-      - MYSQL_PASSWORD=123456Aa     # Replace with your MySQL password
+      - MYSQL_ROOT_PASSWORD=123456Aa
+      - MYSQL_DATABASE=web-blog-db
+      - MYSQL_USER=devs
+      - MYSQL_PASSWORD=123456Aa
     ports:
       - "3306:3306"
     volumes:
@@ -41,6 +47,54 @@ services:
     restart: unless-stopped
     ports:
       - "6379:6379"
+    networks:
+      - web-blog-network
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: unless-stopped
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    networks:
+      - web-blog-network
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+    networks:
+      - web-blog-network
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.17.0
+    container_name: logstash
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    ports:
+      - "5044:5044"
+    depends_on:
+      - elasticsearch
+    networks:
+      - web-blog-network
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.0
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
     networks:
       - web-blog-network
 
