@@ -30,9 +30,17 @@ namespace WebBlog.Infrastructure
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<ICacheService, CacheService>();
-
             services.AddSingleton<RabbitMQClient>(provider =>
-            new RabbitMQClient(configuration["RabbitMQ:HostName"]));
+            {
+                var hostname = configuration["RabbitMQ:HostName"]
+                               ?? throw new InvalidOperationException("RabbitMQ hostname not found.");
+                var username = configuration["RabbitMQ:Username"]
+                               ?? throw new InvalidOperationException("RabbitMQ username not found.");
+                var password = configuration["RabbitMQ:Password"]
+                               ?? throw new InvalidOperationException("RabbitMQ password not found.");
+
+                return new RabbitMQClient(hostname, username, password);
+            });
             services.AddSingleton<RabbitMQConsumer>();
             services.AddSingleton<RabbitMQPublisher>();
             services.AddSingleton<IRabbitMQService, RabbitMQService>();
