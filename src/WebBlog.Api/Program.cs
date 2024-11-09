@@ -1,13 +1,11 @@
 ﻿
-using WebBlog.Application;
-using WebBlog.Infrastructure;
-using Microsoft.OpenApi.Models;
-using WebBlog.Api.Middlewares;
 using FluentValidation;
+using Microsoft.OpenApi.Models;
 using System.Reflection;
 using WebBlog.Api.Filters;
-using static Org.BouncyCastle.Math.EC.ECCurve;
-using Microsoft.Extensions.Options;
+using WebBlog.Api.Middlewares;
+using WebBlog.Application;
+using WebBlog.Infrastructure;
 
 namespace WebBlog.Api
 {
@@ -59,6 +57,7 @@ namespace WebBlog.Api
             });
             builder.Services.AddApplication(builder.Configuration);
             builder.Services.AddInfrastructure(builder.Configuration);
+            builder.Host.UseSerilogLogging();
             var app = builder.Build();
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseCors(builder =>
