@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebBlog.Domain.Entities;
-using WebBlog.Domain.Entities;
 
 namespace WebBlog.Infrastructure
 {

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System.Collections.Generic;
 using WebBlog.Application.Dtos.Post;
+using WebBlog.Application.Exceptions;
 using WebBlog.Application.Repositories;
 using WebBlog.Application.Services.Cache;
 using WebBlog.Application.Services.CurrentUser;
@@ -50,7 +51,7 @@ namespace WebBlog.Application.Services.Post
             }
 
             var postsTask = _postRepository.ToListAsync<PostDto>(
-                orderBy: query => query.OrderByDescending(post => post.Votes.Sum(v => (int)v.VoteType)),
+                orderBy: query => query.OrderByDescending(post => post.Votes.Sum(v => (int)v.VoteType)).ThenByDescending(post => post.ViewCount),
                 page: page,
                 size: pageSize
             );
@@ -68,14 +69,15 @@ namespace WebBlog.Application.Services.Post
             return result;
         }
 
-        public Task<PostDto> GetPostAsync(Guid postID)
+        public async Task<PostDto> GetPostAsync(Guid postID)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task IncrementViewCountPostAsync(Guid postID)
-        {
-            throw new NotImplementedException();
+            var post = await _postRepository.GetByIdAsync(postID);
+            if (post is null)
+            {
+                throw new NotFoundException("Post not found!");
+            }
+            post.ViewCount++;
+            return _mapper.Map<PostDto>(post);
         }
 
         public Task<PostDto> UpdatePostAsync(Guid postID, PostDto post)
