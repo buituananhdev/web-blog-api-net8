@@ -21,6 +21,7 @@ namespace WebBlog.Api.Controllers
             _postService = postService;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreatePostAsync([FromBody]CreatePostDto postDto)
         {
@@ -33,6 +34,14 @@ namespace WebBlog.Api.Controllers
         {
             var result = await _postService.GetPaginationGetPopularPostsAsync(paginationParams.Page, paginationParams.PageSize);
             return Ok(result);
-        } 
+        }
+
+        [HttpGet]
+        [Route("{post_id}")]
+        public async Task<IActionResult> GetPostAsync([FromRoute] Guid post_id)
+        {
+            var result = await _postService.GetPostAsync(post_id);
+            return Ok(result);
+        }
     }
 }

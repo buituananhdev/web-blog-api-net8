@@ -10,6 +10,5 @@ namespace WebBlog.Application.Services.Post
         Task<PostDto> GetPostAsync(Guid postID);
         Task<PostDto?> DeletePostAsync(Guid postID);
         Task<PostDto> UpdatePostAsync(Guid postID, PostDto postDto);
-        Task IncrementViewCountPostAsync(Guid postID);
     }
 }
